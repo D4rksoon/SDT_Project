@@ -4,10 +4,10 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QLabel>
-#include <QTextCodec>
 #include <QFrame>
 #include <QLineEdit>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QValidator>
 
 class Widget : public QWidget
@@ -19,10 +19,13 @@ public:
     ~Widget();
 
 public slots:
+    void begin();
+    void calc();
 
 protected:
-    QVBoxLayout *vLayout;
-    QTextCodec *codec;
+    QVBoxLayout *vLayout1;
+    QVBoxLayout *vLayout2;
+    QHBoxLayout *hLayout;
     QFrame *frame;
     QLabel *inputLabel;
     QLabel *outputLabel;
@@ -30,8 +33,6 @@ protected:
     QLineEdit *outputEdit;
     QPushButton *nextButton;
     QPushButton *exitButton;
-
-
 };
 
 class StrValidator : public QValidator
