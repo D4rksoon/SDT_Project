@@ -2,6 +2,9 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QPushButton>
+#include <QVBoxLayout>
+#include "area.h"
 
 class Widget : public QWidget
 {
@@ -10,5 +13,10 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+
+protected:
+    Area * area;
+    QPushButton * btn;
+    QVBoxLayout *layout;
 };
 #endif // WIDGET_H
