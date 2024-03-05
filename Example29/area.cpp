@@ -8,7 +8,7 @@ Area::Area(QWidget *parent) : QWidget(parent)
     alpha=0;
 }
 
-void Area::showEvent(QShowEvent *)
+void Area::showEvent(QShowEvent *) // анонимный параметр
 {
     myTimer = startTimer(50);
 }
@@ -26,10 +26,8 @@ void Area::timerEvent(QTimerEvent *event)
     if (event->timerId() == myTimer)
     {
         alpha=alpha+0.2;
-        update();
+        update(); // Обновляет виджет (не вызывает напрямую paintEvent)
     }
-    else
-        QWidget::timerEvent(event);
 }
 
 void Area::hideEvent(QHideEvent *)
