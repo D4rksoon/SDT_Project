@@ -39,11 +39,11 @@ Widget::Widget(QWidget *parent)
 
     begin();
 
-    connect(exitButton, SIGNAL(clicked(bool)), this, SLOT(close()));
+    connect(exitButton, &QPushButton::clicked, this, &QWidget::close);
 
-    connect(nextButton, SIGNAL(clicked(bool)), this, SLOT(begin()));
+    connect(nextButton, &QPushButton::clicked, this, &Widget::begin);
 
-    connect(inputEdit, SIGNAL(returnPressed()), this, SLOT(calc()));
+    connect(inputEdit, &QLineEdit::returnPressed, this, &Widget::calc);
 }
 
 void Widget::begin()
