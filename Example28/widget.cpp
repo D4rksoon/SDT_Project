@@ -1,4 +1,5 @@
 #include "widget.h"
+#include <iostream>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -12,21 +13,30 @@ Widget::Widget(QWidget *parent)
     exitButton=new QPushButton("Выход", this);
 
     layout1 = new QHBoxLayout();
-    layout1->addWidget(label1);
-    layout1->addWidget(label2);
-
     layout2 = new QHBoxLayout();
-    layout2->addWidget(edit1);
-    layout2->addWidget(edit2);
-
     layout3 = new QHBoxLayout();
-    layout3->addWidget(calcButton);
-    layout3->addWidget(exitButton);
-
     layout4 = new QVBoxLayout(this);
-    layout4->addLayout(layout1);
-    layout4->addLayout(layout2);
-    layout4->addLayout(layout3);
+
+    if(!layout1 and !layout2 and !layout3 and !layout4){
+        std::cerr << "Memmory error";
+    }
+    else{
+        layout1->addWidget(label1);
+        layout1->addWidget(label2);
+
+        layout2->addWidget(edit1);
+        layout2->addWidget(edit2);
+
+        layout3->addWidget(calcButton);
+        layout3->addWidget(exitButton);
+
+        layout4->addLayout(layout1);
+        layout4->addLayout(layout2);
+        layout4->addLayout(layout3);
+    }
+
+
+
 
     connect(calcButton, &QPushButton::clicked, edit1, &Counter::add_one);
 
