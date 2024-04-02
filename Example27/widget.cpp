@@ -1,5 +1,6 @@
 #include "widget.h"
 #include <QMessageBox>
+#include <limits>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -66,14 +67,20 @@ void Widget::calc()
     doubleValue = str.toDouble(&Ok);
     if(Ok){
         result = doubleValue * doubleValue;
-        str.setNum(result);
-        outputEdit->setText(str);
-        inputEdit->setEnabled(false);
-        outputLabel->setVisible(true);
-        outputEdit->setVisible(true);
-        nextButton->setDefault(true);
-        nextButton->setEnabled(true);
-        nextButton->setFocus();
+        double maxDoubleValue = std::numeric_limits<double>::max();
+        if (result > maxDoubleValue){
+            QMessageBox::information(this, "Возведение в квадрат", "Переполнение");
+        }
+        else{
+            str.setNum(result);
+            outputEdit->setText(str);
+            inputEdit->setEnabled(false);
+            outputLabel->setVisible(true);
+            outputEdit->setVisible(true);
+            nextButton->setDefault(true);
+            nextButton->setEnabled(true);
+            nextButton->setFocus();
+        }
     }
     else{
         if(!str.isEmpty()){
