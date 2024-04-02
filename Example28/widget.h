@@ -26,6 +26,7 @@ public slots:
         intValue++;
         str.setNum(intValue);
         setText(str);
+        // Если выполняется условии, то вызываем сигнал tick_signal
         if(intValue != 0 and intValue % 5 == 0) emit tick_signal();
     }
 };
