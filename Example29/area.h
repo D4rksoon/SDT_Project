@@ -16,10 +16,10 @@ public:
 
 protected:
 
-    void paintEvent(QPaintEvent *event);
-    void timerEvent(QTimerEvent *event);
-    void showEvent(QShowEvent *event);
-    void hideEvent(QHideEvent *event);
+    void paintEvent(QPaintEvent *event); //Событие отрисовки, вызывается при отрисовке виджета
+    void timerEvent(QTimerEvent *event); //Генерируется по истечении установленного интервала запуска таймера
+    void showEvent(QShowEvent *event); //Событие, которое отправляется при отображении виджета
+    void hideEvent(QHideEvent *event); //Событие, которое отправляется при скрытии виджета
 };
 
 #endif // AREA_H
